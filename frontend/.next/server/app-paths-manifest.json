@@ -1,0 +1,8 @@
+{
+  "/[locale]/concepts/noor/page": "app/[locale]/concepts/noor/page.js",
+  "/[locale]/concepts/sakinah/page": "app/[locale]/concepts/sakinah/page.js",
+  "/[locale]/concepts/tawaf/page": "app/[locale]/concepts/tawaf/page.js",
+  "/[locale]/concepts/page": "app/[locale]/concepts/page.js",
+  "/[locale]/concepts/miraj/page": "app/[locale]/concepts/miraj/page.js",
+  "/[locale]/concepts/mizan/page": "app/[locale]/concepts/mizan/page.js"
+}

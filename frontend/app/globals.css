@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 210 10% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 10% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 10% 8%;
+    --primary: 145 80% 25%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 97%;
+    --secondary-foreground: 210 10% 8%;
+    --muted: 210 20% 97%;
+    --muted-foreground: 210 10% 40%;
+    --accent: 48 100% 50%;
+    --accent-foreground: 210 10% 8%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 145 80% 25%;
+    --radius: 0.5rem;
+  }
+
+  * { @apply border-border box-border; }
+  body {
+    @apply bg-white text-[#0f1416] font-sans antialiased;
+    font-family: var(--font-poppins), system-ui, sans-serif;
+  }
+
+  [dir="rtl"] {
+    font-family: var(--font-ibm-arabic), Tajawal, system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Section heading with centered green underline — matches Angular reference */
+  .section-title {
+    font-family: var(--font-volkhov), Georgia, serif;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 52.5px;
+    color: #0f1416;
+    position: relative;
+    display: block;
+    padding-bottom: 18px;
+  }
+  .section-title::after {
+    content: "";
+    background-color: #0d7434;
+    position: absolute;
+    width: 100px;
+    height: 7px;
+    border-radius: 7px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @media (max-width: 1024px) {
+    .section-title {
+      font-size: 26px;
+      line-height: 38px;
+    }
+  }
+
+  .section-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 36px;
+    color: #0f1416;
+    margin-top: 28px;
+  }
+  @media (max-width: 1024px) {
+    .section-subtitle {
+      font-size: 14px;
+      line-height: 26px;
+    }
+  }
+
+  /* Primary CTA button — green pill */
+  .btn-primary {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background: #0d7434;
+    box-shadow: 0px 4px 20px 0px rgba(39,71,96,0.17);
+    border-radius: 24px;
+    padding: 16px 24px;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background: #0a5d2a;
+  }
+  @media (max-width: 1024px) {
+    .btn-primary {
+      font-size: 14px;
+      padding: 10px 16px;
+    }
+  }
+
+  /* Outline register button */
+  .btn-outline {
+    font-size: 16px;
+    font-weight: 400;
+    color: #0d7434;
+    border: 1px solid #0d7434;
+    border-radius: 4px;
+    background: white;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-outline:hover {
+    background: #0d7434;
+    color: white;
+  }
+
+  /* Sign in button */
+  .btn-signin {
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    background: #0d7434;
+    border: 1px solid #0d7434;
+    border-radius: 4px;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-signin:hover {
+    background: #0a5d2a;
+  }
+
+  /* Read More / View More rounded green button */
+  .btn-readmore {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    background: #0d7434;
+    border: none;
+    border-radius: 40px;
+    padding: 25px 50px;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-readmore:hover {
+    background: #0a5d2a;
+  }
+  @media (max-width: 1024px) {
+    .btn-readmore {
+      font-size: 16px;
+      padding: 16px 32px;
+    }
+  }
+
+  /* View More smaller green button */
+  .btn-viewmore {
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    background: #0d7434;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-viewmore:hover {
+    background: #0a5d2a;
+  }
+
+  /* Yellow CTA book button */
+  .btn-yellow {
+    font-size: 18px;
+    font-weight: 500;
+    color: #0f1416;
+    background: #ffca01;
+    border: none;
+    border-radius: 12px;
+    padding: 22px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-yellow:hover {
+    background: #e6b500;
+  }
+
+  .skeleton {
+    @apply bg-neutral-200 rounded animate-shimmer;
+    background-image: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+    background-size: 1000px 100%;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

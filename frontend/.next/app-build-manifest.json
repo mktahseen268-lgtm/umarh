@@ -1,0 +1,65 @@
+{
+  "pages": {
+    "/[locale]/(marketing)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/(marketing)/page.js"
+    ],
+    "/[locale]/(marketing)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/(marketing)/layout.js"
+    ],
+    "/[locale]/(marketing)/template": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/(marketing)/template.js"
+    ],
+    "/[locale]/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/layout.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/[locale]/concepts/miraj/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/concepts/miraj/page.js"
+    ],
+    "/[locale]/concepts/bab/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/concepts/bab/page.js"
+    ],
+    "/[locale]/concepts/mizan/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/concepts/mizan/page.js"
+    ],
+    "/[locale]/concepts/sakinah/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/concepts/sakinah/page.js"
+    ],
+    "/[locale]/concepts/tawaf/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/concepts/tawaf/page.js"
+    ],
+    "/[locale]/concepts/noor/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/concepts/noor/page.js"
+    ],
+    "/[locale]/concepts/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/concepts/page.js"
+    ]
+  }
+}

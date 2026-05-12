@@ -1,0 +1,65 @@
+# Audit Command Log — 2026-04-22
+# All commands executed via Claude Code tool against d:/umrah/
+
+# --- Directory structure verification ---
+ls d:/umrah/
+ls d:/umrah/frontend/
+ls d:/umrah/backend/
+ls d:/umrah/frontend/app/[locale]/(marketing)/
+ls d:/umrah/frontend/app/[locale]/(customer)/
+ls d:/umrah/frontend/app/[locale]/(agency)/
+ls d:/umrah/infra/docker/
+ls d:/umrah/infra/nginx/
+ls -la d:/umrah/backend/alembic/versions/   # RESULT: empty — no migration files
+ls -la d:/umrah/backend/app/workers/         # RESULT: empty — no celery_app
+ls -la d:/umrah/backend/app/services/        # RESULT: empty
+ls -la d:/umrah/backend/app/integrations/    # RESULT: does not exist
+ls -la d:/umrah/backend/tests/unit/          # RESULT: empty
+ls -la d:/umrah/backend/tests/integration/   # RESULT: empty
+ls -la d:/umrah/frontend/components/ui/      # RESULT: empty
+ls -la d:/umrah/frontend/components/dashboard/ # RESULT: empty
+
+# --- File counts ---
+find d:/umrah/frontend/app -name "page.tsx"  # RESULT: 7 pages only
+find d:/umrah/frontend/public -type f         # RESULT: 3 files only (logo.png, placeholder.jpg, placeholder.svg)
+find d:/umrah/frontend/components -name "*.tsx" | wc -l  # RESULT: 17 components
+
+# --- Critical security checks ---
+grep -n "encrypt_pii" d:/umrah/backend/app/core/security.py
+# RESULT: Line 50-56 — base64 encoding, NOT encryption
+
+grep -n "tenant" d:/umrah/backend/app/main.py
+# RESULT: Line 48-51 — stub middleware, no actual tenant logic
+
+grep -n "FOR UPDATE" d:/umrah/backend/app/api/v1/bookings.py
+# RESULT: 0 hits — no locking on quota check (CRIT-04)
+
+grep -n "hajj_quota" d:/umrah/backend/app/api/v1/bookings.py
+# RESULT: Lines 52-55 — read-modify-write without lock
+
+# --- Port verification (after audit changes) ---
+grep -n "8005" d:/umrah/docker-compose.yml   # Backend port changed
+grep -n "3005" d:/umrah/docker-compose.yml   # Frontend port changed
+grep -n "3005" d:/umrah/frontend/package.json # dev script updated
+
+# --- Technology compliance ---
+grep "next" d:/umrah/frontend/package.json   # 14.2.5 ✅
+grep "pydantic" d:/umrah/backend/requirements.txt  # 2.8.2 ✅
+grep "argon2" d:/umrah/backend/requirements.txt    # passlib[argon2] ✅
+grep "asyncpg" d:/umrah/backend/requirements.txt   # 0.29.0 ✅
+
+# --- i18n verification ---
+ls d:/umrah/frontend/locales/en/   # index.json ✅
+ls d:/umrah/frontend/locales/ar/   # index.json ✅
+
+# --- Note: The following commands require a running Docker environment ---
+# and could not be executed in this static audit:
+# docker compose up --build
+# curl http://localhost:8005/api/health
+# curl http://localhost:3005/
+# docker compose exec db psql -U umrah -d umrah_db -c "SELECT version();"
+# docker compose exec db psql -U umrah -d umrah_db -c "SELECT PostGIS_Version();"
+# docker compose exec db psql -U umrah -d umrah_db -c "\dx"
+# docker compose exec db psql -U umrah -d umrah_db -c "SELECT tablename, policyname FROM pg_policies;"
+# pytest --cov=app/services backend/
+# npx playwright test

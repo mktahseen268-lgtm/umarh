@@ -1,0 +1,14 @@
+{
+  "app\\[locale]\\concepts\\bab\\page.tsx -> ./Particles": {
+    "id": "app\\[locale]\\concepts\\bab\\page.tsx -> ./Particles",
+    "files": [
+      "static/chunks/_app-pages-browser_app_locale_concepts_bab_Particles_tsx.js"
+    ]
+  },
+  "app\\[locale]\\concepts\\bab\\page.tsx -> ./PortalShader": {
+    "id": "app\\[locale]\\concepts\\bab\\page.tsx -> ./PortalShader",
+    "files": [
+      "static/chunks/_app-pages-browser_app_locale_concepts_bab_PortalShader_tsx.js"
+    ]
+  }
+}
