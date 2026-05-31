@@ -119,8 +119,8 @@ function mockFromSlug(slug: string): Package {
     category:    MOCK_CATEGORIES[idx],
     duration_days: days,
     duration_nights: nights,
-    base_price:      MOCK_PRICES[idx],
-    discounted_price: idx % 3 === 0 ? Math.round(MOCK_PRICES[idx] * 0.88) : undefined,
+    base_price:      MOCK_PRICES[idx]!,
+    discounted_price: idx % 3 === 0 ? Math.round(MOCK_PRICES[idx]! * 0.88) : undefined,
     currency:    "USD",
     images:      [
       { url: `/images/packages/pkg${(idx % 6) + 1}.jpg`, type: "cover" },
@@ -227,7 +227,7 @@ export default function PackageDetailPage() {
         <div className="relative rounded-2xl overflow-hidden mb-6 mt-2" style={{ height: "420px" }}>
           {hasImages ? (
             <>
-              <Image src={images[imgIdx].url} alt={title} fill className="object-cover" sizes="100vw" priority />
+              <Image src={images[imgIdx]!.url} alt={title} fill className="object-cover" sizes="100vw" priority />
               <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%)" }} />
               {images.length > 1 && (
                 <>

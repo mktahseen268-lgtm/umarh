@@ -803,7 +803,7 @@ export default function AddPackagePage() {
           {/* Section navigation */}
           <div className="flex items-center justify-between mt-8 pt-5 border-t border-slate-100">
             <button
-              onClick={() => setSection(SECTIONS[Math.max(0, currentIdx - 1)].id)}
+              onClick={() => setSection(SECTIONS[Math.max(0, currentIdx - 1)]!.id)}
               disabled={currentIdx === 0}
               className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors disabled:opacity-30"
             >
@@ -811,7 +811,7 @@ export default function AddPackagePage() {
             </button>
             <span className="text-xs text-slate-400">{currentIdx + 1} / {SECTIONS.length}</span>
             <button
-              onClick={() => setSection(SECTIONS[Math.min(SECTIONS.length - 1, currentIdx + 1)].id)}
+              onClick={() => setSection(SECTIONS[Math.min(SECTIONS.length - 1, currentIdx + 1)]!.id)}
               disabled={currentIdx === SECTIONS.length - 1}
               className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90 disabled:opacity-30"
               style={{ background: "#0d7434" }}

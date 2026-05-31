@@ -106,17 +106,17 @@ export default function AdminDashboardPage() {
   const cards = [
     {
       ...CARDS[0],
-      value: stats ? stats.total_bookings.toLocaleString() : CARDS[0].value,
+      value: stats ? stats.total_bookings.toLocaleString() : CARDS[0]!.value,
       unit: "Total Bookings",
     },
     {
       ...CARDS[1],
-      value: stats ? stats.total_agencies.toLocaleString() : CARDS[1].value,
+      value: stats ? stats.total_agencies.toLocaleString() : CARDS[1]!.value,
       unit: "Agencies",
     },
     {
       ...CARDS[2],
-      value: stats ? `$${Math.round(stats.revenue_total / 1000)}K` : CARDS[2].value,
+      value: stats ? `$${Math.round(stats.revenue_total / 1000)}K` : CARDS[2]!.value,
       unit: "Revenue",
     },
   ];

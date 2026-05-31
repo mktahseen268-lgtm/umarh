@@ -12,7 +12,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5436:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U umrah -d umrah_db"]
       interval: 10s
@@ -24,7 +24,7 @@ services:
     image: redis:7-alpine
     restart: unless-stopped
     ports:
-      - "6379:6379"
+      - "6382:6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -40,8 +40,8 @@ services:
     ports:
       - "8005:8005"
     environment:
-      DATABASE_URL:      postgresql+asyncpg://postgres:admin@db:5432/umrah_db
-      DATABASE_URL_SYNC: postgresql://postgres:admin@db:5432/umrah_db
+      DATABASE_URL:      postgresql+asyncpg://umrah:admin@db:5432/umrah_db
+      DATABASE_URL_SYNC: postgresql://umrah:admin@db:5432/umrah_db
       REDIS_URL:         redis://redis:6379/0
       ENVIRONMENT:       development
       DEBUG:             "true"
@@ -67,7 +67,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
-      DATABASE_URL: postgresql+asyncpg://postgres:admin@db:5432/umrah_db
+      DATABASE_URL: postgresql+asyncpg://umrah:admin@db:5432/umrah_db
       REDIS_URL:    redis://redis:6379/0
     depends_on:
       - db
@@ -90,10 +90,6 @@ services:
       PORT: "3005"
     depends_on:
       - api
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-      - /app/.next
 
   # ── Nginx reverse proxy ─────────────────────────────────────────────────────
   nginx:
